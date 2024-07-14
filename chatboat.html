@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  </style>
+</head>
+<body>
+  <p id="chatlog">..Chatboat by ...</p>
+  <input type="text" id="userbox" onkeydown="if(event.keyCode==13){talk()}">
+  <script>
+  let know ={
+"hello":"hi there",
+"how are you?":"i am good thanks for asking. what about you",
+"who are you":"i am chatbpat"
+  };
+  function talk(){
+    var user=document.querySelector('#userbox').value;
+    document.getElementById('userbox').value="";
+    document.getElementById('chatlog').innerHTML +=user+"<br>";
+    if(user in know){
+      document.getElementById('chatlog').innerHTML +=know[user]+="<br>"
+    }else{
+      document.getElementById('chatlog').innerHTML +="i donot understnad";
+    }
+
+  }
+  </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.chat-container {
+    width: 300px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+}
+
+#chat-box {
+    height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+#user-input {
+    width: calc(100% - 65px);
+    padding: 8px;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+button {
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div id="chat-box"></div>
+    <input type="text" id="user-input" placeholder="Type your message...">
+    <button onclick="sendMessage()">Send</button>
+</div>
+ <script>
+  // Possible responses from the chatbot
+const responses = [
+    "Hello! How can I assist you today?",
+    "Hi there! What can I do for you?",
+    "Greetings! How can I help?",
+    "Hey! Feel free to ask me anything.",
+    "Hi! I'm here to help. What do you need?"
+];
+
+// Function to add a message to the chat box
+function addToChatBox(message, sender) {
+    const chatBox = document.getElementById('chat-box');
+    const messageElement = document.createElement('div');
+    messageElement.classList.add('message', sender);
+    messageElement.textContent = message;
+    chatBox.appendChild(messageElement);
+
+    // Automatically scroll to the bottom of the chat box
+    chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+// Function to handle user input and trigger bot response
+function sendMessage() {
+    const userInput = document.getElementById('user-input');
+    const userMessage = userInput.value.trim();
+
+    if (userMessage !== '') {
+        addToChatBox(userMessage, 'user');
+        userInput.value = '';
+
+        // Simulate bot response (replace with actual bot logic)
+        setTimeout(function() {
+            const randomIndex = Math.floor(Math.random() * responses.length);
+            const botResponse = responses[randomIndex];
+            addToChatBox(botResponse, 'bot');
+        }, 500); // Simulate typing delay
+    }
+}
+
+ </script> 
+</body>
+</html>
